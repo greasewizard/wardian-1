@@ -66,6 +66,10 @@
             <a href="{{ url_for('foggerOff') }}" role="button" {% if foggerState %}class="btn btn-dark btn-xl"{% else %} class="btn btn-warning btn-xl"{% endif %}>Off</a>
         </div>
     </div>
+    <div class="card">
+        <h4 class="card-title">Visual</h4>
+        <img src="../currentSnapshot.png"/>
+    </div>
     {% endblock %}
 </div>
 {% endblock %}
