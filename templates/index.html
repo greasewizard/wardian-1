@@ -1,0 +1,68 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Wardian{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+{% block styles %}
+{{ super()}}
+<style>
+.btn-xl {
+    padding: 20px 40px;
+    font-size: 40px;
+    border-radius: 15px;
+}
+
+.btn-dark {
+    color: #000000; 
+    background-color: #777; 
+    border-color: #555;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+</style>
+
+{% endblock %}
+
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Wardian</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}
+    <div class="container col-centered">
+        <p> Lights </p>
+        <div class="btn-group" data-toggle="buttons">
+            <a href="{{ url_for('lightsOn') }}" role="button"  {% if state %}class="btn btn-warning btn-xl"{% else %} class="btn btn-dark btn-xl"{% endif %}>On</a>
+            <a href="{{ url_for('lightsOff') }}" role="button" {% if state %}class="btn btn-dark btn-xl"{% else %} class="btn btn-warning btn-xl"{% endif %}>Off</a>
+        </div>
+    </div>
+    {% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
