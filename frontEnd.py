@@ -14,8 +14,9 @@ moment = Moment(app)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     #state = getState()
-    state = False
-    return render_template('index.html', state=state)
+    lightState = True
+    foggerState = False
+    return render_template('index.html', lightState=lightState, foggerState=foggerState)
 
 #helper function for turning on Lights
 @app.route('/lightsOn')
