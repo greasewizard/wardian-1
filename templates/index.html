@@ -51,11 +51,18 @@
     {% endfor %}
 
     {% block page_content %}
-    <div class="container col-centered">
-        <p> Lights </p>
-        <div class="btn-group" data-toggle="buttons">
-            <a href="{{ url_for('lightsOn') }}" role="button"  {% if state %}class="btn btn-warning btn-xl"{% else %} class="btn btn-dark btn-xl"{% endif %}>On</a>
-            <a href="{{ url_for('lightsOff') }}" role="button" {% if state %}class="btn btn-dark btn-xl"{% else %} class="btn btn-warning btn-xl"{% endif %}>Off</a>
+    <div class="card">
+        <h4 class="card-title">Lights</h4>
+        <div class="btn-group card-body" data-toggle="buttons">
+            <a href="{{ url_for('lightsOn') }}" role="button"  {% if lightState %}class="btn btn-warning btn-xl"{% else %} class="btn btn-dark btn-xl"{% endif %}>On</a>
+            <a href="{{ url_for('lightsOff') }}" role="button" {% if lightState %}class="btn btn-dark btn-xl"{% else %} class="btn btn-warning btn-xl"{% endif %}>Off</a>
+        </div>
+    </div>
+    <div class="card">
+        <h4 class="card-title">Humidity</h4>
+        <div class="btn-group card-body" data-toggle="buttons">
+            <a href="{{ url_for('foggerOn') }}" role="button"  {% if foggerState %}class="btn btn-warning btn-xl"{% else %} class="btn btn-dark btn-xl"{% endif %}>On</a>
+            <a href="{{ url_for('foggerOff') }}" role="button" {% if foggerState %}class="btn btn-dark btn-xl"{% else %} class="btn btn-warning btn-xl"{% endif %}>Off</a>
         </div>
     </div>
     {% endblock %}
